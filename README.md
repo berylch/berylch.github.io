@@ -1,2 +1,0 @@
-# berylch.github.io
-aframe
