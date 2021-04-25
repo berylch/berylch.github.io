@@ -10,13 +10,14 @@
         
 			tick: function () {
           var el = this.el;
-          el.addEventListener('xbuttondown', function (evt) {
+          el.addEventListener('click', function (evt) {
             el.setAttribute('position', {x:cameraX,y:cameraY,z:cameraZ});
 
           });
           
         }
     });
+
     </script>
   </head>
   <body>
