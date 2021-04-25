@@ -1,6 +1,21 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+      var cameraX=0;
+		var cameraY=0;
+		var cameraZ=9;
+
+      AFRAME.registerComponent("move-camera", {
+        
+			tick: function () {
+          var el = this.el;
+          el.addEventListener('xbuttondown', function (evt) {
+            el.setAttribute('position', {x:cameraX,y:cameraY,z:cameraZ});
+          });
+        }
+    });
+    </script>
   </head>
   <body>
     <a-scene >
@@ -10,10 +25,8 @@
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
 
-      <a-entity camera look-controls wasd-controls="acceleration:100" position="0 1.6 0"></a-entity>
-      <a-entity windows-motion-controls="hand: left"></a-entity>
-      <a-entity windows-motion-controls="hand: right"></a-entity>
-      <a-entity tracked-controls="controller: 0; idPrefix: OpenVR"></a-entity>
+      <a-entity camera look-controls wasd-controls="acceleration:100" position="0 0 5" move-camera></a-entity>
+      
     </a-scene>
   </body>
 </html>
