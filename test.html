@@ -2,6 +2,49 @@
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script>
+     //摄像机的初始位置
+		var cameraX=0;
+		var cameraY=0;
+		var cameraZ=10;
+		
+		//创建移动摄像机的组件
+		AFRAME.registerComponent("move-camera", {
+		
+			tick: function () {
+				//通过gamepad api获取游戏手柄数据
+				var gamepads = navigator.getGamepads();
+				// console.log(gamepads)
+				for(var i=0;i<gamepads.length;i++){
+					var pad=gamepads[i];
+          alert(pad)
+				// 	//获取游戏手柄摇杆拨动数值
+				// 	var a0=pad.axes[0];
+				// 	var a1=pad.axes[1];
+				// 	//限定最大最小值在-1到1之间避免位移过于剧烈
+				// 	if(a0>1){
+				// 		a0=1;
+				// 	}
+				// 	if(a0<-1){
+				// 		a0=-1;
+				// 	}
+					
+				// 	if(a1>1){
+				// 		a1=1;
+				// 	}
+				// 	if(a1<-1){
+				// 		a1=-1;
+				// 	}					
+				// 	//将获得的值作为位移
+				// 	cameraX+=a0;
+				// 	cameraZ+=a1;
+				// 	//设置摄像机的位置
+				// 	this.el.setAttribute('position',{x:cameraX,y:cameraY,z:cameraZ});					
+				}
+
+        this.el.setAttribute('position',{x:cameraX,y:cameraY,z:cameraZ});			
+			}
+			
+		});
 		
 
     </script>
@@ -14,8 +57,8 @@
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
 
-      <a-entity camera look-controls="enabled:true" orbit-controls="target: 0 1.6 -0.5; minDistance: 0.5; maxDistance: 180; initialPosition: 0 5 15">
-				
+      <a-entity position="0 0 5" move-camera>
+				<a-camera></a-camera>
 			</a-entity>
 
       
