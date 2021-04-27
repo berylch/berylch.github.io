@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+	  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+      
+      $(document).ready(function(){ 
+
+        $.ajax({  
+              type : "GET",
+              url : "test.json",//"http://172.16.100.20:8080/satsimDC-admin/api/wave/info/queryWaveInfo", 
+              data : {  
+                // "stationId": GetQueryString('stationId'),
+                // "starlinkId":GetQueryString('starlinkId')
+              },
+              dataType: "json",
+              success : function(result) {
+                  if (result) {  
+                    var rows = result.length;
+                    var cols = result[0].length;
+                    var step = 4;
+                      for(var i=0;i<rows-1;i++){
+                        for(var j=0;j<cols-1;j++){
+                          var a = "" + result[i][j].x + " "+ result[i][j].z+ " "+ result[i][j].y;
+                          var b = "" + result[i][j+1].x + " "+ result[i][j+1].z+ " "+ result[i][j+1].y;
+                          var c = "" + result[i+1][j+1].x + " "+ result[i+1][j+1].z+ " "+ result[i+1][j+1].y;
+                          var d = "" + result[i+1][j].x + " "+ result[i+1][j].z+ " "+ result[i+1][j].y;
+                          var color = "#000000";
+                          if(result[i][j].z >16*step) {
+                            color = "#800000";
+                          } else if(result[i][j].z >15*step) {
+                            color = "#bf0000";
+                          } else if(result[i][j].z >14*step) {
+                            color = "#ff0000";
+                          } else if(result[i][j].z >13*step) {
+                            color = "#ff4000";
+                          } else if(result[i][j].z >8*step) {
+                            color = "#ff8000";
+                          } else if(result[i][j].z >7*step) {
+                            color = "#ffbf00";
+                          } else if(result[i][j].z >6*step) {
+                            color = "#ffff00";
+                          } else if(result[i][j].z >3*step) {
+                            color = "#bfff40";
+                          } else if(result[i][j].z >1.5*step) {
+                            color = "#80ff80";
+                          } else if(result[i][j].z >1*step) {
+                            color = "#40ffbf";
+                          } else if(result[i][j].z >0.7*step) {
+                            color = "#00ffff";
+                          } else if(result[i][j].z >0.5*step) {
+                            color = "#00bfff";
+                          } else if(result[i][j].z >0.3*step) {
+                            color = "#0080ff";
+                          } else if(result[i][j].z >0.2*step) {
+                            color = "#0040ff";
+                          } else if(result[i][j].z >0.1*step) {
+                            color = "#0000ff";
+                          } else {
+                            color = "#0000bf";
+                          }
+                          $('#scene').append(
+                            '<a-triangle vertex-a="'+a +'" vertex-b="'+b +'" vertex-c="'+d +'" color="'+color +'" material=""></a-triangle>' +
+                             '<a-triangle vertex-a="'+b +'" vertex-b="'+c +'" vertex-c="'+d +'" color="'+color +'" material=""></a-triangle>'
+                          );
+                        }
+                      }
+                  } else {  
+  
+                  }  
+              }  
+          }); 
+
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene id="scene">
+      <a-sky color="#ECECEC"></a-sky>
+      <a-entity id="rig"
+          movement-controls="speed: 2"
+          position="10 0 10">
+		    <a-entity camera
+					position="0 1.6 0"
+					look-controls></a-entity>
+	    </a-entity>
+    </a-scene>
+  </body>
+</html>
