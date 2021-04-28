@@ -1,0 +1,26 @@
+# Wavefront OBJ exported by MilkShape 3D
+
+mtllib longBox2.mtl
+
+v 0 0 0
+v 1 0 0
+v 1 0 -1
+v 0 1 0
+v 1 1 0
+v 1 1 -1
+v 0 1 -1
+
+vt 0.01 0.2
+vt 0.09 0.2
+vt 0.2 0.2
+vt 0.3 0.2
+vt 0.5 0.2
+vt 0.7 0.2
+vt 0.4 0.2
+
+usemtl imageMat2
+
+f 1/1 2/2 5/5 4/4
+f 2/2 3/3 6/6 5/5
+f 5/5 6/6 7/7 4/4
+
