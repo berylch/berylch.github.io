@@ -1,0 +1,6 @@
+
+# longBox2.mtl
+
+newmtl imageMat2
+
+map_Kd color.jpg
