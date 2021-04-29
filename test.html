@@ -13,6 +13,18 @@
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
 
+      <a-assets>
+        <!-- <a-asset-item id="triceratops" src="triceratops.gltf" ></a-asset-item> -->
+        <a-asset-item id="crate-obj" src="penguin.obj"></a-asset-item>
+        <a-asset-item id="crate-mtl" src="penguin.mtl"></a-asset-item>
+        <!-- <a-asset-item id="brainstem" src="https://cdn.aframe.io/test-models/models/glTF-2.0/brainstem/BrainStem.gltf"></a-asset-item> -->
+	  <!-- <a-asset-item id="reticle"
+      src="reticle.gltf"
+      response-type="arraybuffer" crossorigin="anonymous"></a-asset-item> -->
+    </a-assets>
+     
+    <a-entity obj-model="obj: #crate-obj; mtl: #crate-mtl" position="5 0 0" ></a-entity>
+    
       <a-entity id="rig"
           movement-controls="speed: 2"
           position="10 0 10">
