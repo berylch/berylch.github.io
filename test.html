@@ -15,8 +15,10 @@
 
       <a-assets>
         <!-- <a-asset-item id="triceratops" src="triceratops.gltf" ></a-asset-item> -->
-        <a-asset-item id="crate-obj" src="penguin.obj"></a-asset-item>
-        <a-asset-item id="crate-mtl" src="penguin.mtl"></a-asset-item>
+        <a-asset-item id="crate-obj" src="Bigmax_White_OBJ.obj"></a-asset-item>
+        <a-asset-item id="crate-mtl" src="Bigmax_White_OBJ.mtl"></a-asset-item>
+	      <a-asset-item id="crate-obj2" src="crate.obj"></a-asset-item>
+        <a-asset-item id="crate-mtl2" src="crate.mtl"></a-asset-item>
         <!-- <a-asset-item id="brainstem" src="https://cdn.aframe.io/test-models/models/glTF-2.0/brainstem/BrainStem.gltf"></a-asset-item> -->
 	  <!-- <a-asset-item id="reticle"
       src="reticle.gltf"
@@ -24,6 +26,7 @@
     </a-assets>
      
     <a-entity obj-model="obj: #crate-obj; mtl: #crate-mtl" position="5 0 0" ></a-entity>
+	    <a-entity obj-model="obj: #crate-obj2; mtl: #crate-mtl2" position="-5 0 0" ></a-entity>
     
       <a-entity id="rig"
           movement-controls="speed: 2"
