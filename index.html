@@ -7,27 +7,26 @@
   </head>
       <script>
 	  $(function(){
-		let a=70.0;
+		var a=0;
+		var add = true
 		var  components = document.querySelector('a-entity[obj-model]').components;
 		var interval = setInterval(function(){
-		
-			a=a-10.0;
 			
-			if(a<-60){
-
-				clearInterval(interval);
-				return;
-			
-			}else{
-			
-				components["obj-model"].loadObj('longBox_'+a+'.0_'+a+'.0_32_32_0.5_60.0.obj','longBox.mtl');
+			if(add) {
+				a += 10;
+				if(a>60){
+					add = false
+				}
+			} else {
+				a -= 10;
+				if(a<-60){
+					add = true
+				}
 			}
-		}, 2000)
-		
-	  
-	  })
+			components["obj-model"].loadObj('longBox_'+a+'.0_'+a+'.0_32_32_0.5_60.0.obj','longBox.mtl');
 
-	  
+		}, 2000)	  
+	  })	  
     </script>
   <body>
     <a-scene background="color: #FAFAFA"  renderer="colorManagement: true;" stats>
