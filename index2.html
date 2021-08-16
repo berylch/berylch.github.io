@@ -9,7 +9,7 @@
          if ("serial" in navigator) {
         
         console.log("The Web Serial API is supported.");
-             this.port = await navigator.serial.requestPort();
+             navigator.serial.requestPort();
         
       } else {
         console.log("The Web Serial API is NOT supported.");
